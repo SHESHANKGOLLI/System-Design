@@ -418,4 +418,140 @@ Publisher, Subscriber, Subscription, Request, OnNexxt(), OnComplete(), OnError()
 	4.Based on number of request, those many onNext() will be invoked by publisher to produce the results.
 	5.If all request are passed then oncomplete() method will be invoked or onError() will be called by Publisher.
 
-		
+==========================================
+
+What optimistic locking & pessimistic locking
+Spring-ioc-container, Types of dependency injections, Types of autowiring
+
+Spring boot auto-configuration
+Spring boot bean scopes
+Spring boot batch
+Spring boot swagger- @EnableSwagger2 Swagger is widely used for visualizing APIs, and with Swagger UI it provides online sandbox for frontend developers
+Spring boot JPA/HIBERNATE (n+1 related prblems)
+Spring boot desgin patterns
+Spring boot trans manag (concrncy) monilithic and Distributed trans SAGA MS architechture (Event based (choreography) and command based (orchestration))
+			https://www.javainuse.com/spring/boot-transaction-propagation
+			
+Spring boot security - JWT , OAUTH2
+Spring boot accutators
+
+Spring cloud 	pivotal foundry	
+				https://www.youtube.com/watch?v=jM2HwFbVtIg
+				https://www.youtube.com/watch?v=HMBupaa1P1A
+Spring cloud 	zuul server.(api gatewasy) routing 
+				https://www.youtube.com/watch?v=6aG0xFpeNFw
+				https://www.youtube.com/watch?v=cRhoODRCZAo
+				API Gateway with MS https://www.youtube.com/watch?v=bRBgVMngHcQ
+Spring cloud 	config
+Spring cloud 	eureka (netflix server) (service registry) 
+				discovery (service registry)
+				https://www.youtube.com/watch?v=irBEdp7XlSQ
+Pivotal cloud 	Foundry	= Circuit breaker -  @EnableCircuitBreaker
+				hystirx
+Spring cloud 	ribbon	(Load balancer (distributing the request)) 
+				https://www.youtube.com/watch?v=ueyVjOnDHYQ 
+				https://www.youtube.com/watch?v=_e97OLyEEiA
+				https://www.baeldung.com/spring-cloud-rest-client-with-netflix-ribbon
+				
+				Feign client (auto load balancer, mostly we will use it in MS) spring-cloud-starter-openfeign 	
+				https://www.youtube.com/watch?v=_MMf2SvNqxo
+Spring cloud 	slueth
+				zipkins
+Spring cloud 	pipelines
+
+MicroServices DesignPatterns
+Microservices principles
+
+Spring AOP = Aspect Oriented Language
+			
+Sprint Reactive Programming
+Spring Batch  = When we transfor huge number of data form one source to another source, then this batch processing will be used for quick completion.
+				
+				https://youtu.be/hr2XTbKSdAQ?list=PLVz2XdJiJQxyC2LMLgDjFGJBX9TJAM4A2
+=================
+Java
+
+kafka
+ExceptionHandling
+Multithreaading
+Java8 features
+Java design patterns
+SOLID Principal			
+		https://www.baeldung.com/solid-principles
+		https://www.youtube.com/watch?v=BM_lSZPMClo
+
+12 factors of SpringBootMicroservices	
+		https://www.baeldung.com/spring-boot-12-factor
+		https://12factor.net/
+Clean code principles 	
+		https://www.baeldung.com/java-clean-code
+Collections
+Abstration,Association,Aggregation,Composition
+
+SQL VS NoSQL DataBases:
+		https://www.youtube.com/watch?v=hainZwgvGYY&list=PLVz2XdJiJQxwS8FyWnWyKyfILxHPLsiro&index=2
+
+Java 8 = CompletableFuture interface https://www.youtube.com/watch?v=GJ5Tx43q6KM
+BDD 	= https://www.youtube.com/watch?v=8AEQt4CSX5U&t=32s
+TDD		= https://www.youtube.com/watch?v=UzRa5cLma0g&t=701s
+================================================================================
+Spring Boot
+
+@SpringBootApplication = @Configuration @EnableAutoConfiguration(It will enable based oncndtion) @ComponentScan-scan of pur packages to register in bean IOC 
+
+@Conditional or @Configuration (It creates a bean object in IOC Container)
+@Controller (with prototypename) or @Service @ @Component("laptop") @Repository
+@Primary(class level anotation)
+
+@Autowired	(DependencyInjection)
+@Quliaifer("Cat") or @Qualifier("laptop") (We wlill use inthe case of ambiguuty)
+@Resource(name="${beanName}")( Ambiguioty + DI)
+@Value("${listOfValues.value.fusion.api}")
+ConfigurableApplicationCOntext cnotezrt
+context.getBean(lien.class)
+@Transactional (method level or class level)
+@EnableSpringTransactional
+
+
+Sprint Annoataions:
+https://www.youtube.com/watch?v=htyq-mER0AE
+=============================================================================================================================
+Spring Boot:
+Excetion : RestControllerAdvice https://www.youtube.com/watch?v=gPnd-hzM_6A&list=RDCMUCORuRdpN2QTCKnsuEaeK-kQ&index=29
+Spring Boot Logging with log4-spring.xml and Splunk.
+https://www.youtube.com/watch?v=VO20SgiTTOU&list=PLVz2XdJiJQxwLTK4h387zBtxyKwMkhTXU
+==========================================================================================================================
+Sprin Auto Configration
+@ComponentScan @Configuration @EnableAutoConiguration	
+==========================================================================================================================
+Sprint AOP = @PointCut and @Advice,, @jointpoint  methods( @AroundAdvice) , @Aspect, 
+	Aspect oriented language means, we have to segerate the business logic and our custom logic seperately i.e logs
+		    @Pointcut("execution(* Operation.*(..))") 
+			@AfterThrowing(pointcut = "execution(* Operation.*(..))",  throwing= "error")  
+==========================================================================================================================
+Important
+<parent>
+org.springframework.boot
+spring-boot-starter-parent
+2.4.5
+</parent>
+
+So when we use above parent in pom.xml, then all the dependcies version will use above delcared version. and also parent tag provides configure some default
+like java version, webversion and some etcc.
+
+Now what we don't want to specify the parent in web.xml, then we have to come with below approach called spring dependency managment,
+
+<dependencyManagement>
+	<dependencies>
+	<dependency>	
+		org.springframework.boot
+		spring-boot-dependencies
+		2.4.5
+	</dependency>
+	</dependencies>
+</dependencyManagement>
+so adding above tag will act as a parent thing, so if you wanted to use any other sprint dependcies, then version will inherit from above dependency management
+
+==============================================
+What is inversion of control:  Refer below for every interview.It is very much important
+https://www.educative.io/answers/what-is-inversion-of-control 
