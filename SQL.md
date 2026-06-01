@@ -52,3 +52,32 @@ Below is to find the students which are greater than average marks
 select studentname from Student where StudentMarks > (select avg(Marks) from (select avg(StudentMarks) as Marks from Student group by studentname));
 //Adam 89, Robert 98,Kali 110
 
+====
+
+Sql Indexes:
+https://www.javatpoint.com/how-to-create-index-in-mysql
+Indexes are used to retrieve the data faster using indexex on columns
+
+1) Clustered Indexes -> We can create only one clustered index in a table.
+2) Non clustered indexes
+
+
+When a table is created with a primary key or unique key, it automatically creates a special index named PRIMARY. 
+We called this index as a clustered index. All indexes other than PRIMARY indexes are known as a non-clustered index or secondary index.
+
+
+
+Core Types of Data Integrity
+SQL typically categorizes integrity into four main areas:
+
+
+Entity Integrity: Ensures that every table has a Primary Key and that this key is unique and not null. This allows every row in a table to be uniquely identified.
+Domain Integrity: Restricts the type, format, or range of values that can be stored in a specific column. For example, an Age column might only accept integers between 0 and 120.
+Referential Integrity: Maintains the relationships between tables using Foreign Keys. It ensures that a value in one table points to a valid, existing record in another (e.g., an OrderID must link to an existing CustomerID).
+User-Defined Integrity: Allows developers to define specific business rules that don't fall under the standard categories, often implemented using Triggers or S
+
+
+
+1. Normalization
+2. ACID proprties
+
