@@ -56,7 +56,60 @@ The Strategy Design Pattern is a behavioral design pattern that allows you to de
 4. With that class, it will call the actual overrided method.
 5. In the main class of client code, we will create an object of contextual class and then assign one object of implementation class.
 
+interface Strategy {
+	void StrategyMethod();
+}
 
+class StrategyImp1 implements Strategy {
+	void StrategyMethod(){
+	System.out.println("StrategyImp1 method executed")
+	}
+}
+
+class StrategyImp2 implements Strategy {
+	void StrategyMethod(){
+	System.out.println("StrategyImp2 method executed")
+	}
+}
+
+class ContextStrategy {
+	Strategy strategy;
+
+	public void setStrategy(Strategy strategy)
+	{
+	this.strategy =. strategy;
+	}
+	public void doSomething()
+	{
+		strategy.StrategyMethod();
+	}
+
+}
+class MainStrategy {
+	main(){
+		ContextStrategy contextStrategy = new ContextStrategy();
+		contextStrategy.setStrategy(new StrategyImp1());
+		contextStrategy.doSomething();
+	}
+}
+
+public interface RouteStrategy
+void buildRoute(String source, String destination);
+
+public class DrivingStrategy implements RouteStrategy {
+public class WalkingStrategy implements RouteStrategy {
+
+public class NavigatorContext {
+    private RouteStrategy routeStrategy;
+
+public class Main {
+    public static void main(String[] args) {
+        NavigatorContext navigator = new NavigatorContext(); String startPoint = "Central Station"; String endPoint = "Airport";
+
+        // User chooses to drive
+        navigator.setRouteStrategy(new DrivingStrategy());
+        navigator.executeRoute(startPoint, endPoint);
+===================================================================================================================================================
 Template Design Pattern:
 
 The Template Method Design Pattern is a behavioral design pattern that defines the skeleton of an algorithm in a superclass but lets subclasses override specific steps of the algorithm without changing its overall structure.
@@ -66,3 +119,97 @@ The Template Method Design Pattern is a behavioral design pattern that defines t
 3. Now main class will create an object of either of one implementation class and calls the methods.
 	It can call already concrete methods and overrided method from the implementation classes
 
+public abstract class BuiltHouse {
+	public final void built(){
+	pillars();
+	foundation();
+	walls();
+	rooms();
+	}
+
+	public void pillars() {
+	System.out.println("pillars are done")
+	}
+
+	public void foundation() {
+	System.out.println("foundation is done")
+	}
+
+	protected void walls();
+	protected void rooms();
+
+}
+
+class WoodenHouse extends BuiltHouse {
+	void walls() {
+	System.out.println("wooden walls is done")
+	}
+
+	void rooms() {
+	System.out.println("wooden rooms is done")
+	}
+}
+
+class ConcreteHouse extends BuiltHouse {
+	void walls() {
+	System.out.println("Concrete walls is done")
+	}
+
+	void rooms() {
+	System.out.println("Concrete rooms is done")
+	}
+}
+
+class MainClass {
+main(){
+BuiltHouse builtHouse = new WoodenHouse();
+builtHouse.built();
+}
+}
+
+===================================================================================================================================================
+
+The Decorator Design Pattern is a structural design pattern that allows you to dynamically add new behaviors or responsibilities to an object without altering its source code or affecting the behavior of other objects from the same class.
+
+public interface TaskDecorator {
+	Runnable execute(Runnable runnable);
+}
+
+public class MdcDecorator implements TaskDecorator {
+	@Override
+	public Runnable execute(Runnable runnable) {
+
+		Map<String, String> contextMap = MDC.getCopyofContextMap();
+
+		() -> {
+			try {
+				if (contextMap != null)
+				{
+					MDC.setContextMap(contextMap)
+				}
+				runnable.run();
+			}
+			finally {
+				MDC.clear();
+			}
+		};
+
+	}
+}
+
+@Configuration
+public class AsyncConfig {
+
+	@Bean(""AsyncTaskExecutor)
+	public Executor threadExecutor() {
+	ThreadPoolTaskExecutor executer = new ThreadPoolTaskExecutor();
+	executer.setCorePoolSize();
+	executer.setMaxPoolSize();
+	executer.setQueueCapacit();
+	executor.setTaskDecorator(new MdcDecorator());
+	}
+}
+
+====================================================================================================
+
+Adapter, Facade, Proxy
